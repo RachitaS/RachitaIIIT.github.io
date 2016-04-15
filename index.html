@@ -16,28 +16,31 @@
     <div class="wrapper">
       <header>
         <h1>Rachitas.GitHub.io</h1>
-        <p></p>
+        <p>Information Retrieval and Extraction Course, IIIT-H - Major Project</p>
 
 
         <p class="view"><a href="https://github.com/RachitaS">View My GitHub Profile</a></p>
 
       </header>
       <section>
-        <h3>
-<a id="derived-a-method-to-measure-the-contextual-independence-of-a-sentence" class="anchor" href="#derived-a-method-to-measure-the-contextual-independence-of-a-sentence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Derived a method to measure the Contextual Independence of a sentence.</h3>
+        <h2>
+<a id="information-retrieval-and-extraction-course-iiit-h---major-project" class="anchor" href="#information-retrieval-and-extraction-course-iiit-h---major-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Information Retrieval and Extraction Course, IIIT-H - Major Project</h2>
 
 <h1>
-<a id="application" class="anchor" href="#application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Application:</h1>
+<a id="derived-a-method-to-measure-the-contextual-independence-of-a-sentence" class="anchor" href="#derived-a-method-to-measure-the-contextual-independence-of-a-sentence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Derived a method to measure the Contextual Independence of a sentence.</h1>
+
+<h2>
+<a id="application" class="anchor" href="#application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Application:</h2>
 
 <p>The contextually independent sentences can be used as a general sentence in a different document as they are independent of the context. Also, it is useful creating a sub-document of a large document such a summarization, key points report etc.</p>
 
-<h1>
-<a id="objective" class="anchor" href="#objective" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objective:</h1>
+<h2>
+<a id="objective" class="anchor" href="#objective" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objective:</h2>
 
 <p>To create a model for identifying the best possible sequence of Contextual Independent(CI) and Contextually Dependent(CD) sentences in a test document.</p>
 
-<h1>
-<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description:</h1>
+<h2>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description:</h2>
 
 <p>A sentence is produced to complete a local discourse and a document can be viewed as a sequence of local discourse units than sentences. Each local discourse unit is a sequence of Contextually independent(CI) sentence followed by contextually dependent(CD) sentences. eg: Scientists A and B discovered twin stars near the black hole in Andromeda galaxy. Also the life span of the black hole is determined by these scientists. An annotated dataset of around 100 documents in which each sentence is annotated as CI/CD will be given.Students has to use a sequence labeling scheme and create a model for identifying the best possible sequence of CI and CD sentences in a test document. The probability of each sentence ton CI can be a measure to represents it's contextual independence.Local Discourse Unit can be utilized as a better linguistic unit with more topic information than a sentence as far as automated text summarization is concerned. Contextual independence of a sentence can play a vital role in deciding it's
 generality.</p>
@@ -47,13 +50,13 @@ generality.</p>
 
 <p>The algorithms and the tools used for implementing the model to identify the contextual independence of a sentence in a corpus are as follows:</p>
 
-<h1>
-<a id="sequence-labeling-algorithm" class="anchor" href="#sequence-labeling-algorithm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sequence Labeling Algorithm:</h1>
+<h3>
+<a id="sequence-labeling-algorithm" class="anchor" href="#sequence-labeling-algorithm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sequence Labeling Algorithm:</h3>
 
 <p>Sequence labeling algorithm is used for part of speech tagging task. Every sentence is assigned to a part of speech tag. Sequence labeling can be treated as a set of independent classification tasks, one per member of the sequence. The accuracy is generally improved by making the optimal label for a given element dependent on the choices of nearby elements, using special algorithms to choose the globally best set of labels for the entire sequence at once. For implementing this algorithm we used conditional random field (CRF), a popular probabilistic method for structured prediction.</p>
 
-<h1>
-<a id="crf-tool" class="anchor" href="#crf-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CRF++ Tool:</h1>
+<h3>
+<a id="crf-tool" class="anchor" href="#crf-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CRF++ Tool:</h3>
 
 <p>CRF++ is used for conditional random field method implementation. This tool helped finding most likely label sequence given an input sequence and learning.</p>
 
