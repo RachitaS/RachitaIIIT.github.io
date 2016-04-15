@@ -23,37 +23,61 @@
 
       </header>
       <section>
-        <p>Derived a method to measure the Contextual Independence of a sentence.</p>
+        <h3>
+<a id="derived-a-method-to-measure-the-contextual-independence-of-a-sentence" class="anchor" href="#derived-a-method-to-measure-the-contextual-independence-of-a-sentence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Derived a method to measure the Contextual Independence of a sentence.</h3>
 
-<p>Application:</p>
+<h1>
+<a id="application" class="anchor" href="#application" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Application:</h1>
 
 <p>The contextually independent sentences can be used as a general sentence in a different document as they are independent of the context. Also, it is useful creating a sub-document of a large document such a summarization, key points report etc.</p>
 
-<p>Objective:</p>
+<h1>
+<a id="objective" class="anchor" href="#objective" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Objective:</h1>
 
 <p>To create a model for identifying the best possible sequence of Contextual Independent(CI) and Contextually Dependent(CD) sentences in a test document.</p>
 
-<p>Description:</p>
+<h1>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description:</h1>
 
 <p>A sentence is produced to complete a local discourse and a document can be viewed as a sequence of local discourse units than sentences. Each local discourse unit is a sequence of Contextually independent(CI) sentence followed by contextually dependent(CD) sentences. eg: Scientists A and B discovered twin stars near the black hole in Andromeda galaxy. Also the life span of the black hole is determined by these scientists. An annotated dataset of around 100 documents in which each sentence is annotated as CI/CD will be given.Students has to use a sequence labeling scheme and create a model for identifying the best possible sequence of CI and CD sentences in a test document. The probability of each sentence ton CI can be a measure to represents it's contextual independence.Local Discourse Unit can be utilized as a better linguistic unit with more topic information than a sentence as far as automated text summarization is concerned. Contextual independence of a sentence can play a vital role in deciding it's
 generality.</p>
 
-<p>Algorithms and Tools to be used:
-The algorithms and the tools to be used for implementing the model to identify the
-contextual independence of a sentence in a corpus are as follows:
-Sequence Labeling Algorithm:
-Sequence labeling algorithm will be used for part of speech tagging task. Every
-sentence will be assigned to a part of speech tag. Sequence labeling can be treated as
-a set of independent classification tasks, one per member of the sequence. The
-accuracy is generally improved by making the optimal label for a given element
-dependent on the choices of nearby elements, using special algorithms to choose the
-globally best set of labels for the entire sequence at once.
-For implementing this algorithm we will be using conditional random field (CRF), a
-popular probabilistic method for structured prediction.
-CRF++ Tool:
-CRF++ will be used for conditional random field method implementation. This tool
-will help finding most likely label sequence given an input sequence and
-learning.</p>
+<h2>
+<a id="algorithms-and-tools-used" class="anchor" href="#algorithms-and-tools-used" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Algorithms and Tools used:</h2>
+
+<p>The algorithms and the tools used for implementing the model to identify the contextual independence of a sentence in a corpus are as follows:</p>
+
+<h1>
+<a id="sequence-labeling-algorithm" class="anchor" href="#sequence-labeling-algorithm" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sequence Labeling Algorithm:</h1>
+
+<p>Sequence labeling algorithm is used for part of speech tagging task. Every sentence is assigned to a part of speech tag. Sequence labeling can be treated as a set of independent classification tasks, one per member of the sequence. The accuracy is generally improved by making the optimal label for a given element dependent on the choices of nearby elements, using special algorithms to choose the globally best set of labels for the entire sequence at once. For implementing this algorithm we used conditional random field (CRF), a popular probabilistic method for structured prediction.</p>
+
+<h1>
+<a id="crf-tool" class="anchor" href="#crf-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CRF++ Tool:</h1>
+
+<p>CRF++ is used for conditional random field method implementation. This tool helped finding most likely label sequence given an input sequence and learning.</p>
+
+<h2>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Methods:</h2>
+
+<p>The dataset in consideration is the Local Discourse Unit (LDU) corpora. The data contains an XML representation of the data, which composes of the following: 1. A sentence identifier to identify uniquely the sentence, 2. The sentence string and 3. The contextual independence element that specifies whether the sentence is context-independent or not using a Boolean representation of zero and one.  These three components of the dataset constitute the inputs and labels. Our task is to extract all the inputs and labels using the Sequence labeling algorithm and tag them using Part of Speech (POS) taggers. </p>
+
+<p>First part of the project is to sequence label the sentences based on the POS taggers. Sequence labeling can be treated as a set of independent classification tasks, one per member of the sequence. We used the Stanford Named Entity Recognition Tagger (StanfordNERTagger) provided by the Stanford University to perform our initial classification process. The accuracy is generally improved by making the optimal label for a given element dependent on the choices of nearby elements and getting the best set of labels for the entire sequence.</p>
+
+<p>Second part of the project is to use the output of our sequence-labeling task performed above as an input to part of speech tagging process. The part of speech tagging task can be achieved using Conditional Random Fields (CRF), a probabilistic method for structured prediction. For this purpose, we have chosen the CRF++ Tool.</p>
+
+<p>CRF++ is an open source implementation of the Conditional Random Fields (CRFs) for segmenting/labeling sequential data. CRF++ is a simple and customizable tool and is designed for the generic purpose of a variety of NLP tasks, such as Named Entity Recognition, Information Extraction and Text Chunking. CRF++ tool expects the input (training and test file) to be of a specific format to work properly. The format consists of multiple tokens in multiple columns, each represented in a single line, with the columns separated by white space or tab. A sequence of token becomes a sentence which is bounded by a empty line. The first column represents our token (sentence), the other columns are their corresponding POS tags and labels. </p>
+
+<p>Once we have the input formatted, the CRF++ tool requires a feature template. The feature template is a file which has a specific macro notation %x[row,col] that corresponds to the tokens in the input file. A row specifies the relative position from the current token and col specifies the absolute position of the column. You can expand the feature set to denote how you want to prepare your feature set for the specific task as in our case, part of speech tagging. There are two types of templates that can also help us in enhancing our feature set. They are, Unigram and Bigram template. </p>
+
+<p>The following two commands provided by the CRF++ tool helps in training the model for the specific tasks.</p>
+
+<p>1) crf_learn template_file train_file model_file
+2) crf_test -m model_file test_file</p>
+
+<p>The CRF learn command takes as input the template file and the training file and produces a model file that is the actual trained model based on the inputs. The model file can then be used to test multiple test inputs to check the accuracy of your model. The CRF++ uses a combination of forward Viterbi and backward A* search. This combination yields the list of the best results in the model. The test output is redirected to a file, which is in the same format as that of the input. The only difference being the additional columns that come as part of the output, which are the predicted values that has been learned by CRF++. </p>
+
+<p>The association of the input POS tag and the predicted values calculate the accuracy.</p>
       </section>
       <footer>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
